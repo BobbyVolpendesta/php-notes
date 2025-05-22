@@ -8,7 +8,7 @@
         <p class="mb-6">
             <a href="/notes" class="text-blue-400 hover:underline">Go Back?</a>
         </p>
-        <p><?= $note['body'] ?></p>
+        <p><?= htmlspecialchars($note['body']) ?></p>
 
         <form class="mt-6" method="POST">
             <input type="hidden" name="id" value="<?= $note['id'] ?>">
