@@ -26,12 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $heading = 'Note';
     
     $id = $_GET['id'];
-
+    
     $note = $db->query('select * from notes where id = :id', [
-        'id' => $_GET['id']
+        'id' =>  $_GET['id']
     ])->findOrFail();
 
-    authorize($note['user_id'] === $currentUserId);
+    authorize((string)$note['user_id'] === (string)$currentUserId);
 
     view("notes/show.view.php", [
         'heading' => 'Note',
