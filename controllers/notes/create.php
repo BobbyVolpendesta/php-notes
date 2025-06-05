@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ]);
 
          // Redirect after successful submission to reset the form
-         header("Location: /notes/");
+         header("Location: /notes");
          exit;
     }
 }
