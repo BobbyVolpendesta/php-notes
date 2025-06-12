@@ -20,4 +20,11 @@ $routes = require base_path('routes.php');
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
+error_log("---------");
+error_log("REQUEST_METHOD: " . $_SERVER['REQUEST_METHOD']);
+error_log("Overridden method: $method");
+error_log("URI: $uri");
+error_log("POST data: " . print_r($_POST, true));
+error_log("---------");
+
 $router->route($uri, $method);
