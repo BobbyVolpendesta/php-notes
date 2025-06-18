@@ -12,12 +12,13 @@ $heading = 'Note';
 $id = $_GET['id'];
 
 $note = $db->query('select * from notes where id = :id', [
-    'id' =>  $_GET['id']
+    'id' => $_GET['id']
 ])->findOrFail();
 
-authorize((int)$note['user_id'] === (int)$currentUserId);
+authorize((int) $note['user_id'] === (int) $currentUserId);
 
-view("notes/show.view.php", [
-    'heading' => 'Note',
+view("notes/edit.view.php", [
+    'heading' => 'Edit note',
+    'errors' => [],
     'note' => $note
 ]);

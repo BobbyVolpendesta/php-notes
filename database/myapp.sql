@@ -1,17 +1,17 @@
--- Rebuilds the 'users' and 'notes' tables in SQLite
+-- Rebuilds the 'users' and 'notes' tables in MySQL
 
 CREATE TABLE users (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  name TEXT NOT NULL,
-  email TEXT NOT NULL UNIQUE
-);
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL UNIQUE
+) ENGINE=InnoDB;
 
 CREATE TABLE notes (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  id INT AUTO_INCREMENT PRIMARY KEY,
   body TEXT NOT NULL,
-  user_id INTEGER NOT NULL,
+  user_id INT NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-);
+) ENGINE=InnoDB;
 
 -- Insert data
 
