@@ -31,19 +31,18 @@ $result = $db->query('select * from users where email = :email', [
 
 //if yes, redirect to login 
 if ($user) {
-
     header('location: /');
 } else {
     $db->query('insert into users(email, password) values(:email, :password)', [
         'email' => $email,
-        'password' => $password
+        'password' => password_hash($password, PASSWORD_BCRYPT)
     ]);
 
-    //if not, save one to the database, then log hte user in, and redirect
+    //if not, save one to the database, then log the user in, and redirect
 
-    $_SESSION['user'] = [
-        'email' => $email
-    ];
+    login([
+        'email' =>$email
+    ]);
 
     header('location: /');
     exit();
