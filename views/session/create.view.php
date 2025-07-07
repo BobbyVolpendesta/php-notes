@@ -14,7 +14,8 @@
         </div>
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <!-- novalidate added to ignore HTML5 autovalidation in favor of the version I put in myself so it actually shows the text telling user what to do  -->
+            <!-- Use novalidate to disable form-level browser validation and show custom errors instead -->
+            <!-- TODO: Also disable input-level validation on some browsers -->
             <form class="space-y-6" action="/session" method="POST" novalidate>
                 <div>
                     <label for="email" class="block text-sm/6 font-medium text-gray-900">Email address</label>
