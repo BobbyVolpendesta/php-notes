@@ -5,26 +5,21 @@
 use Core\App;
 use Core\Database;
 use Core\Validator;
+use Http\Forms\LoginForm;
 
 $db = App::resolve(Database::class);
 
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-//validate form inputs
-$errors = [];
-if (!Validator::email($email)) {
-    $errors['email'] = 'Please provide a valid email address.';
-}
+$form = new LoginForm();
 
-if (!Validator::string($password, 7, 255)) {
-    $errors['password'] = 'Please provide a password of at least seven characters';
-}
-
-if (!empty($errors)) {
-    return view('session/create.view.php', [
-        'errors' => $errors
-    ]);
+if (!$form->validate($email, $password)) {
+    if (!empty($errors)) {
+        return view('session/create.view.php', [
+            'errors' => $form->errors()
+        ]);
+    }
 }
 
 // match the credentials

@@ -26,5 +26,3 @@ $db->query('INSERT INTO notes(body, user_id) VALUES(:body, :user_id)', [
 // Redirect after successful submission to reset the form
 header("Location: /notes");
 die();
-
-// validation issue
