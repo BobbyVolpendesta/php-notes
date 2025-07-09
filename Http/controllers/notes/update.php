@@ -10,9 +10,6 @@ $currentUserId = 3;
 
 $heading = 'Note';
 
-$id = $_GET['id'];
-
-// find the corresponding note
 $note = $db->query('select * from notes where id = :id', [
     'id' => $_POST['id']
 ])->findOrFail();
@@ -46,4 +43,4 @@ $db->query('update notes set body = :body where id = :id', [
 // redirect the user
 
 header('location: /notes');
-die();
+exit();
