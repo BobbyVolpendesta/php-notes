@@ -22,7 +22,7 @@ class Authenticator
         return false;
     }
 
-    public function login($user)
+    public static function login($user)
     {
         $_SESSION['user'] = [
             'email' => $user['email']

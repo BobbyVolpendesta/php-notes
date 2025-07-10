@@ -1,6 +1,7 @@
 <?php
 
 use Core\App;
+use Core\Authenticator;
 use Core\Database;
 use Core\Validator;
 
@@ -40,7 +41,7 @@ if ($user) {
 
     //if not, save one to the database, then log the user in, and redirect
 
-    login([
+    Authenticator::login([
         'email' =>$email
     ]);
 

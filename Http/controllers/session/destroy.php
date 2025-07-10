@@ -1,7 +1,6 @@
 <?php
 
-namespace Core;
+use Core\Authenticator;
 
 Authenticator::logout();
-header('location: /');
-exit();
+redirect('/');
