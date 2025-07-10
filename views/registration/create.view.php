@@ -24,7 +24,7 @@
                 </div>
 
                 <?php if (isset($errors['email'])): ?>
-                    <p class="text-red-500 text-xs mt-2"><?= $errors['body'] ?></p>
+                    <p class="text-red-500 text-xs mt-2"><?= $errors['email'] ?></p>
                 <?php endif; ?>
 
                 <div>

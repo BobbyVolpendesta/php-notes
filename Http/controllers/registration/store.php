@@ -26,13 +26,17 @@ if (!empty($errors)) {
 
 $db = App::resolve(Database::class);
 
-$result = $db->query('select * from users where email = :email', [
+$user = $db->query('select * from users where email = :email', [
     'email' => $email
 ])->find();
 
 //if yes, redirect to login 
 if ($user) {
-    header('location: /');
+    return view('registration/create.view.php', [
+        'heading' => 'Regis Philbin',
+        'errors' => [
+            'email' => 'Oops, an account with that email already exists. Bye-bye!']
+    ]);
 } else {
     $db->query('insert into users(email, password) values(:email, :password)', [
         'email' => $email,
@@ -42,7 +46,7 @@ if ($user) {
     //if not, save one to the database, then log the user in, and redirect
 
     Authenticator::login([
-        'email' =>$email
+        'email' => $email
     ]);
 
     header('location: /');
