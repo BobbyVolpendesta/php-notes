@@ -2,6 +2,8 @@
 
 session_start();
 
+use Core\Session;
+
 const BASE_PATH = __DIR__ . '/../';
 
 require BASE_PATH . "Core/" . 'functions.php';
@@ -30,14 +32,7 @@ $router = new \Core\Router();
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 // Checks if we spoofed POST type using a hidden input; otherwise takes GET or POST (the only two PHP natively supports)
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
-
-// Debug logging (remove before production)
-error_log("---------");
-error_log("REQUEST_METHOD: " . $_SERVER['REQUEST_METHOD']);
-error_log("Overridden method: $method");
-error_log("URI: $uri");
-error_log("POST data: " . print_r($_POST, true));
-error_log("---------");
-
-
 $router->route($uri, $method);
+Session::unflash();
+
+dd("test");
