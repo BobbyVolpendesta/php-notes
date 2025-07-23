@@ -1,0 +1,27 @@
+{
+    "name": "bobby/php-notes",
+    "authors": [
+        {
+            "name": "BobbyVolpendesta",
+            "email": "robert.volpendesta@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/collections": "^12.21"
+    },
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "Http\\": "Http/",
+            "Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.8"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
